@@ -1,0 +1,44 @@
+{
+    "format_version": 2,
+    "metadata": {
+        "authors": [
+            "Ricc"
+        ]
+    },
+    "header": {
+        "name": "Force-Item-Battle",
+        "description": "This is a Minecraft Bedrock Minigame.",
+        "min_engine_version": [
+            1,
+            21,
+            120
+        ],
+        "uuid": "4b7814b9-a646-4da4-86b2-b367650be1ee",
+        "version": [
+            1,
+            0,
+            0
+        ]
+    },
+    "modules": [
+        {
+            "type": "resources",
+            "uuid": "583f7b40-6498-4b8c-b8f5-7c362b0402d7",
+            "version": [
+                1,
+                0,
+                0
+            ]
+        }
+    ],
+    "dependencies": [
+        {
+            "uuid": "ac21ac88-fc58-412d-a539-2e059ee25327",
+            "version": [
+                1,
+                0,
+                0
+            ]
+        }
+    ]
+}
