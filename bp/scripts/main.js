@@ -7,7 +7,7 @@ world.afterEvents.itemUse.subscribe((e) => {
   }
 });
 function show(player) {
-  const ui = new ChestFormData()
+  const ui = new ChestFormData(54)
     .title("Main")
     .button(0, "Hi", [], "minecraft:stone")
     .show(player)

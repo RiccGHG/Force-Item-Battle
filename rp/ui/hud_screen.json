@@ -13,13 +13,13 @@
         "alpha": 0.5,
         "controls": [
           {
-            "actionbar_message": {
+            "title_message": {
               "type": "label",
               "anchor_from": "center",
               "anchor_to": "center",
               "color": "$tool_tip_text",
               "layer": 31,
-              "text": "$actionbar_text",
+              "text": "$title_text",
               "localize": false,
               "alpha": 10
             }
