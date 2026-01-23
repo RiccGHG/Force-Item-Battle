@@ -1,0 +1,29 @@
+{
+    "namespace": "hud",
+
+    // Modification Actionbar Offset And Icon Timer
+
+    "hud_actionbar_text": {
+        "type": "image",
+        "anchor_from": "top_middle",
+        "anchor_to": "top_middle",
+        "size": [ "100%c + 12px", "100%c + 5px" ],
+        "offset": [ 0, 22 ],
+        "texture": "textures/ui/hud_tip_text_background",
+        "alpha": 0.5,
+        "controls": [
+          {
+            "actionbar_message": {
+              "type": "label",
+              "anchor_from": "center",
+              "anchor_to": "center",
+              "color": "$tool_tip_text",
+              "layer": 31,
+              "text": "$actionbar_text",
+              "localize": false,
+              "alpha": 10
+            }
+          }
+        ]
+      }
+}
