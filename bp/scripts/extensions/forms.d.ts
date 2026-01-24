@@ -1,3 +1,8 @@
+/**
+Third-party code
+Source: https://github.com/Herobrine643928/Chest-UI/blob/main/
+License: CC BY 4.0
+*/
 import { Player, RawMessage } from "@minecraft/server";
 import { ActionFormResponse } from "@minecraft/server-ui";
 
