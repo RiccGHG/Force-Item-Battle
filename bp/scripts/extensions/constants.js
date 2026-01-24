@@ -1,4 +1,9 @@
 /**
+Third-party code
+Source: https://github.com/Herobrine643928/Chest-UI/blob/main/
+License: CC BY 4.0
+*/
+/**
  * Turns the logic for inventory slots on/off. Only set this to false if you have disabled inventory in RP/ui/_global_variables.json side!
  * Disabling this may also reduce form opening lag a bit.
  */
