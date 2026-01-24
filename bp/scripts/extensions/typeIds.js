@@ -1,3 +1,8 @@
+/**
+Third-party code
+Source: https://github.com/Herobrine643928/Chest-UI/blob/main/
+License: CC BY 4.0
+*/
 export const typeIdToID = new Map([
 	['minecraft:waxed_oxidized_copper_lantern', -1090],
 	['minecraft:waxed_weathered_copper_lantern', -1089],
