@@ -10,8 +10,7 @@ https://creativecommons.org/licenses/by/4.0/
 All files with the header comment
 ```js
 // Third-party code
-// Source:
-https://github.com/Herobrine643928/Chest-UI/blob/main/
+// Source: https://github.com/Herobrine643928/Chest-UI/blob/main/
 // License: CC BY 4.0
 ```
 are included.
