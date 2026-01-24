@@ -1,3 +1,8 @@
+/**
+Third-party code
+Source: https://github.com/Herobrine643928/Chest-UI/blob/main/
+License: CC BY 4.0
+*/
 import { Container } from '@minecraft/server';
 import { ActionFormData } from '@minecraft/server-ui';
 import { custom_content, custom_content_keys, inventory_enabled, number_of_custom_items, CHEST_UI_SIZES } from './constants.js';
