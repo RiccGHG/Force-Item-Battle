@@ -17,11 +17,19 @@
           "anchor_to": "center",
           "color": "$tool_tip_text",
           "layer": 31,
-          "text": "$title_text",
-          "localize": false,
-          "alpha": 10
+          "text": "$title_text"
         }
       }
+    ]
+  },
+  "logo": {
+    "type": "image",
+    "anchor_from": "bottom_right",
+    "anchor_to": "bottom_right",
+    "text": "textures/pack_icon",
+    "size": [
+        "100%",
+        "100%"
     ]
   }
 }
