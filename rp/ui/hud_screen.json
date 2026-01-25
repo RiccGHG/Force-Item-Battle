@@ -9,7 +9,6 @@
     "offset": [0, 22],
     "texture": "textures/ui/hud_tip_text_background",
     "alpha": "@hud.anim_title_text_alpha_in",
-    "propagate_alpha": true,
     "controls": [
       {
         "title_message": {
