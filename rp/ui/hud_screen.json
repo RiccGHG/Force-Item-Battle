@@ -2,13 +2,14 @@
   "namespace": "hud",
 
   "hud_title_text": {
-    "type": "image",
+    "type": "stack_panel",
     "anchor_from": "top_middle",
     "anchor_to": "top_middle",
     "size": ["100%c + 12px", "100%c + 5px"],
     "offset": [0, 22],
     "texture": "textures/ui/hud_tip_text_background",
-    "alpha": 0.5,
+    "alpha": "@hud.anim_title_text_alpha_in",
+    "propagate_alpha": true,
     "controls": [
       {
         "title_message": {
