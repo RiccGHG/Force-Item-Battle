@@ -8,7 +8,7 @@
     "size": ["100%c + 12px", "100%c + 5px"],
     "offset": [0, 22],
     "texture": "textures/ui/hud_tip_text_background",
-    "alpha": "@hud.anim_title_text_alpha_in",
+    "alpha": "@hud.anim_actionbar_text_background_alpha_out",
     "controls": [
       {
         "title_message": {
@@ -30,6 +30,9 @@
     "size": [
         "100%",
         "100%"
-    ]
+    ],
+    "bindings": [{
+        "binding_name_override": "#visible"
+    }]
   }
 }
