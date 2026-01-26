@@ -23,85 +23,86 @@
       }
     ]
   },
-  "logo_image": {
-    "type": "image",
-    "anchor_from": "bottom_right",
-    "anchor_to": "bottom_right",
-    "text": "textures/ui/pack_icon",
-    "size": [
-        100,
-        100
-    ],
-    "bindings": [{
-        "binding_type": "view",
-        "source_property_name": "('hi' = 'hi')",
-        "target_property_name": "#visible"
-    }]
-  },
-  "logo_image_factory": {
-        "type": "panel",
-        "factory": {
-            "name": "hud_title_text_factory",
-            "control_ids": {
-                "hud_title_text": "logo_image@hud.logo_image"
-            }
-        }
-    },
-    "preserved_title_display": {
+
+  "preserved_title_display": {
     "$update_string": "update",
     "type": "image",
     "texture": "#text",
     "anchor_from": "top_right",
     "anchor_to": "top_right",
-    "size": [
-        100,
-        100
-    ],
+    "size": [100, 100],
     "controls": [
-        {
-            "data_control": {
-                "type": "panel",
-                "size": [0, 0],
-                "property_bag": {
-                    "#preserved_text": ""
-                },
-                "bindings": [
-                    {
-                        "binding_name": "#hud_title_text_string"
-                    },
-                    {
-                        "binding_name": "#hud_title_text_string",
-                        "binding_name_override": "#preserved_text",
-                        "binding_condition": "visibility_changed"
-                    },
-                    {
-                        "binding_type": "view",
-                        "source_property_name": "(not (#hud_title_text_string = #preserved_text) and not ((#hud_title_text_string - $update_string) = #hud_title_text_string))",
-                        "target_property_name": "#visible"
-                    }
-                ]
+      {
+        "data_control": {
+          "type": "panel",
+          "size": [0, 0],
+          "property_bag": {
+            "#preserved_text": ""
+          },
+          "bindings": [
+            {
+              "binding_name": "#hud_title_text_string"
+            },
+            {
+              "binding_name": "#hud_title_text_string",
+              "binding_name_override": "#preserved_text",
+              "binding_condition": "visibility_changed"
+            },
+            {
+              "binding_type": "view",
+              "source_property_name": "(not (#hud_title_text_string = #preserved_text) and not ((#hud_title_text_string - $update_string) = #hud_title_text_string))",
+              "target_property_name": "#visible"
             }
+          ]
         }
+      }
     ],
     "bindings": [
-        {
-            "binding_type": "view",
-            "source_control_name": "data_control",
-            "source_property_name": "(#preserved_text - $update_string)",
-            "target_property_name": "#text"
-        }
+      {
+        "binding_type": "view",
+        "source_control_name": "data_control",
+        "source_property_name": "(#preserved_text - $update_string)",
+        "target_property_name": "#text"
+      }
     ]
-},
+  },
 
-    "root_panel": {
-        "modifications": [
-            {
-                "array_name": "controls",
-                "operation": "insert_front",
-                "value": {
-                    "logo_image_factory@hud.logo_image_factory": {}
-                }
-            }
-        ]
+  "logo_image": {
+    "type": "image",
+    "anchor_from": "bottom_right",
+    "anchor_to": "bottom_right",
+    "text": "textures/ui/pack_icon",
+    "size": [100, 100],
+    "bindings": [
+        {
+            "binding_name": "#hud_title_text_string"
+        },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not (#hud_title_text_string = 'hi'))",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+  "logo_image_factory": {
+    "type": "panel",
+    "factory": {
+      "name": "hud_title_text_factory",
+      "control_ids": {
+        "hud_title_text": "logo_image@hud.logo_image"
+      }
     }
+  },
+  
+  "root_panel": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": {
+          "logo_image_factory@hud.logo_image_factory": {}
+        }
+      }
+    ]
+  }
 }
