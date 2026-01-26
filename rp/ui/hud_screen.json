@@ -18,7 +18,7 @@
           "color": "$tool_tip_text",
           "layer": 31,
           "text": "$title_text",
-          "alpha": 10
+          "alpha": "@hud.anim_actionbar_text_alpha_out"
         }
       }
     ]
@@ -32,11 +32,15 @@
         100,
         100
     ],
-    "visible": true
+    "bindings": [{
+        "binding_type": "view",
+        "source_property_name": "('hi' = 'hi')",
+        "target_property_name": "#visible"
+    }]
   },
-    "black_conditional_image": {
+    "item_image": {
         "type": "image",
-        "texture": "textures/ui/pack_icon",
+        "texture": "#hud_title_text_string",
         "size": [100, 100],
         "layer": 10,
         "anchor_from": "top_right",
@@ -47,18 +51,18 @@
             },
             {
                 "binding_type": "view",
-                "source_property_name": "(#hud_title_text_string = 'hello world')",
+                "source_property_name": "(not (#hud_title_text_string = '§unoImg'))",
                 "target_property_name": "#visible"
             }
         ]
     },
 
-    "black_conditional_image_factory": {
+    "item_image_factory": {
         "type": "panel",
         "factory": {
             "name": "hud_title_text_factory",
             "control_ids": {
-                "hud_title_text": "black_conditional_image@hud.black_conditional_image"
+                "hud_title_text": "item_image@hud.item_image"
             }
         }
     },
@@ -69,7 +73,7 @@
                 "array_name": "controls",
                 "operation": "insert_front",
                 "value": {
-                    "black_conditional_image_factory@hud.black_conditional_image_factory": {}
+                    "item_image_factory@hud.item_image_factory": {}
                 }
             }
         ]
