@@ -31,8 +31,44 @@
         "100%",
         "100%"
     ],
-    "bindings": [{
-        "binding_name_override": "#visible"
-    }]
-  }
+    "visible": true
+  },
+    "black_conditional_image": {
+        "type": "image",
+        "texture": "textures/pack_icon",
+        "size": [16, 16],
+        "layer": 10,
+        "bindings": [
+            {
+                "binding_name": "#hud_title_text_string"
+            },
+            {
+                "binding_type": "view",
+                "source_property_name": "(#hud_title_text_string = 'hello world')",
+                "target_property_name": "#visible"
+            }
+        ]
+    },
+
+    "black_conditional_image_factory": {
+        "type": "panel",
+        "factory": {
+            "name": "hud_title_text_factory",
+            "control_ids": {
+                "hud_title_text": "black_conditional_image@hud.black_conditional_image"
+            }
+        }
+    },
+
+    "root_panel": {
+        "modifications": [
+            {
+                "array_name": "controls",
+                "operation": "insert_front",
+                "value": {
+                    "black_conditional_image_factory@hud.black_conditional_image_factory": {}
+                }
+            }
+        ]
+    }
 }
