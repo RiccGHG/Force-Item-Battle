@@ -27,18 +27,20 @@
     "type": "image",
     "anchor_from": "bottom_right",
     "anchor_to": "bottom_right",
-    "text": "textures/pack_icon",
+    "text": "textures/ui/pack_icon",
     "size": [
-        16,
-        16
+        100,
+        100
     ],
     "visible": true
   },
     "black_conditional_image": {
         "type": "image",
-        "texture": "textures/pack_icon",
-        "size": [16, 16],
+        "texture": "textures/ui/pack_icon",
+        "size": [100, 100],
         "layer": 10,
+        "anchor_from": "top_right",
+        "anchor_to": "top_right",
         "bindings": [
             {
                 "binding_name": "#hud_title_text_string"
