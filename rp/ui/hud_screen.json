@@ -43,7 +43,7 @@
         "factory": {
             "name": "hud_title_text_factory",
             "control_ids": {
-                "hud_title_text": "item_image@hud.item_image"
+                "hud_title_text": "logo_image@hud.logo_image"
             }
         }
     },
@@ -51,6 +51,12 @@
     "$update_string": "update",
     "type": "image",
     "texture": "#text",
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "size": [
+        100,
+        100
+    ],
     "controls": [
         {
             "data_control": {
