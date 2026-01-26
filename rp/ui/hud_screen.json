@@ -17,7 +17,8 @@
           "anchor_to": "center",
           "color": "$tool_tip_text",
           "layer": 31,
-          "text": "$title_text"
+          "text": "$title_text",
+          "alpha": 10
         }
       }
     ]
@@ -28,8 +29,8 @@
     "anchor_to": "bottom_right",
     "text": "textures/pack_icon",
     "size": [
-        "100%",
-        "100%"
+        16,
+        16
     ],
     "visible": true
   },
