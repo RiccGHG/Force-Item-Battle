@@ -31,15 +31,15 @@
     "size": [100, 100],
     "bindings": [
         {
-            "binding_name": "#hud_subtitle_text_string"
+            "binding_name": "#hud_title_text_string"
         },
       {
         "binding_type": "view",
-        "source_property_name": "(not (#hud_subtitle_text_string = 'hi'))",
+        "source_property_name": "(not (#hud_title_text_string = 'hi'))",
         "target_property_name": "#visible"
       },
       {
-        "binding_name": "#hud_subtitle_text_string",
+        "binding_name": "#hud_title_text_string",
         "binding_name_override": "#texture"
       }
     ]
@@ -47,9 +47,9 @@
   "item_image_factory": {
     "type": "panel",
     "factory": {
-      "name": "hud_subtitle_text_factory",
+      "name": "hud_title_text_factory",
       "control_ids": {
-        "hud_subtitle_text": "item_image@hud.item_image"
+        "hud_title_text": "item_image@hud.item_image"
       }
     }
   },
