@@ -6,7 +6,7 @@
     "anchor_from": "top_middle",
     "anchor_to": "top_middle",
     "size": ["100%c + 12px", "100%c + 5px"],
-    "offset": [0, 22],
+    "offset": [0, 25],
     "texture": "textures/ui/hud_tip_text_background",
     "alpha": "@hud.anim_actionbar_text_background_alpha_out",
     "controls": [
@@ -23,13 +23,53 @@
       }
     ]
   },
+  "preserved_title_display": {
+    "$update_string": "update",
+    "type": "label",
+    "text": "#text",
+    "controls": [
+        {
+            "data_control": {
+                "type": "panel",
+                "size": [0, 0],
+                "property_bag": {
+                    "#preserved_text": ""
+                },
+                "bindings": [
+                    {
+                        "binding_name": "#hud_title_text_string"
+                    },
+                    {
+                        "binding_name": "#hud_title_text_string",
+                        "binding_name_override": "#preserved_text",
+                        "binding_condition": "visibility_changed"
+                    },
+                    {
+                        "binding_type": "view",
+                        "source_property_name": "(not (#hud_title_text_string = #preserved_text) and not ((#hud_title_text_string - $update_string) = #hud_title_text_string))",
+                        "target_property_name": "#visible"
+                    }
+                ]
+            }
+        }
+    ],
+    "bindings": [
+        {
+            "binding_type": "view",
+            "source_control_name": "data_control",
+            "source_property_name": "(#preserved_text - $update_string)",
+            "target_property_name": "#text"
+        }
+    ]
+},
 
   "item_image": {
     "type": "image",
     "texture": "",
     "size": [100, 100],
-    "anchor_from": "top_left",
-    "anchor_to": "top_left",
+    "offset": [-10, -10],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
     "layer": 10,
     "bindings": [
       {
@@ -60,8 +100,8 @@
     "type": "image",
     "texture": "textures/ui/pack_icon",
     "size": [100, 100],
-    "anchor_from": "bottom_left",
-    "anchor_to": "bottom_left",
+    "anchor_from": "bottom_right",
+    "anchor_to": "bottom_right",
     "layer": 10,
     "visible": true
   },
