@@ -24,66 +24,22 @@
     ]
   },
 
-  "preserved_title_display": {
-    "$update_string": "update",
+  "item_image": {
     "type": "image",
-    "texture": "#text",
     "anchor_from": "top_right",
     "anchor_to": "top_right",
     "size": [100, 100],
-    "controls": [
-      {
-        "data_control": {
-          "type": "panel",
-          "size": [0, 0],
-          "property_bag": {
-            "#preserved_text": ""
-          },
-          "bindings": [
-            {
-              "binding_name": "#hud_title_text_string"
-            },
-            {
-              "binding_name": "#hud_title_text_string",
-              "binding_name_override": "#preserved_text",
-              "binding_condition": "visibility_changed"
-            },
-            {
-              "binding_type": "view",
-              "source_property_name": "(not (#hud_title_text_string = #preserved_text) and not ((#hud_title_text_string - $update_string) = #hud_title_text_string))",
-              "target_property_name": "#visible"
-            }
-          ]
-        }
-      }
-    ],
-    "bindings": [
-      {
-        "binding_type": "view",
-        "source_control_name": "data_control",
-        "source_property_name": "(#preserved_text - $update_string)",
-        "target_property_name": "#text"
-      }
-    ]
-  },
-
-  "item_image": {
-    "type": "image",
-    "anchor_from": "bottom_right",
-    "anchor_to": "bottom_right",
-    "text": "",
-    "size": [100, 100],
     "bindings": [
         {
-            "binding_name": "#hud_title_text_string"
+            "binding_name": "#hud_subtitle_text_string"
         },
       {
         "binding_type": "view",
-        "source_property_name": "(not (#hud_title_text_string = 'hi'))",
+        "source_property_name": "(not (#hud_subtitle_text_string = 'hi'))",
         "target_property_name": "#visible"
       },
       {
-        "binding_name": "#hud_title_text_string",
+        "binding_name": "#hud_subtitle_text_string",
         "binding_name_override": "#texture"
       }
     ]
@@ -91,13 +47,20 @@
   "item_image_factory": {
     "type": "panel",
     "factory": {
-      "name": "hud_title_text_factory",
+      "name": "hud_subtitle_text_factory",
       "control_ids": {
-        "hud_title_text": "item_image@hud.item_image"
+        "hud_subtitle_text": "item_image@hud.item_image"
       }
     }
   },
-  
+  "logo_image": {
+    "type": "image",
+    "texture": "textures/ui/pack_icon",
+    "anchor_from": "bottom_right",
+    "anchor_to": "bottom_right",
+    "size": [100, 100],
+    "visible": "true"
+  },
   "root_panel": {
     "modifications": [
       {
@@ -105,6 +68,13 @@
         "operation": "insert_front",
         "value": {
           "item_image_factory@hud.item_image_factory": {}
+        }
+      },
+       {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": {
+          "logo_image@hud.logo_image": {}
         }
       }
     ]
