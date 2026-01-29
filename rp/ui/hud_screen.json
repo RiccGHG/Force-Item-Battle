@@ -20,35 +20,6 @@
           "text": "$title_text",
           "alpha": "@hud.anim_actionbar_text_alpha_out"
         }
-      },
-      {
-         "subtitle_frame": {
-          "type": "panel",
-          "controls": [
-            {
-              "subtitle": {
-                "type": "label",
-                "anchor_from": "top_middle",
-                "anchor_to": "top_middle",
-                "color": "$title_command_text_color",
-                "enable_profanity_filter": true,
-                "text": "#text",
-                "$hud_subtitle_text": "$subtitle_text",
-                "layer": 31,
-                "localize": false,
-                "visible": "false",
-                "text_alignment": "center",
-                "bindings": [
-                  {
-                    "binding_name": "#hud_subtitle_text_string",
-                    "binding_name_override": "#text",
-                    "binding_type": "global"
-                  }
-                ]
-              }
-            }
-          ]
-        }
       }
     ]
   },
@@ -57,7 +28,7 @@
     "type": "image",
     "anchor_from": "top_right",
     "anchor_to": "top_right",
-    "size": [100, 100],
+    "size": [50, 50],
     "bindings": [
         {
             "binding_name": "#hud_subtitle_text_string"
@@ -76,11 +47,12 @@
 
   "logo_image": {
     "type": "image",
-    "texture": "hud_title_text@$hud_subtitle_text",
+    "texture": "textures/ui/pack_icon",
     "anchor_from": "bottom_right",
     "anchor_to": "bottom_right",
     "size": [100, 100],
-    "visible": "true"
+    "offset": [-20, 0],
+    "visible": true
   },
   "root_panel": {
     "modifications": [
