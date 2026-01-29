@@ -20,6 +20,76 @@
           "text": "$title_text",
           "alpha": "@hud.anim_actionbar_text_alpha_out"
         }
+      },
+      {
+         "subtitle_frame": {
+          "type": "panel",
+          "size": [ "100%", "100%cm" ],
+          "controls": [
+            {
+              "subtitle_background": {
+                "type": "image",
+                "size": [ "100%sm + 20px", "100%sm + 5px" ],
+                "offset": [ 0, 16 ],
+                "texture": "textures/ui/hud_tip_text_background",
+                "variables": [
+                  {
+                    "requires": "$subtitle_initially_visible",
+                    "$subtitle_bg": "@hud.anim_title_background_alpha_in"
+                  },
+                  {
+                    "requires": "(not $subtitle_initially_visible)",
+                    "$subtitle_bg": "@hud.anim_subtitle_background_alpha_in"
+                  }
+                ],
+                "alpha": "$subtitle_bg"
+              }
+            },
+            {
+              "subtitle": {
+                "type": "label",
+                "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "color": "$title_command_text_color",
+                "enable_profanity_filter": true,
+                "text": "#text",
+                "$hud_subtitle_text": "#text",
+                "layer": 31,
+                "localize": false,
+                "font_size": "large",
+                "variables": [
+                  {
+                    "requires": "$subtitle_initially_visible",
+                    "$anim_type": 1.0
+                  },
+                  {
+                    "requires": "(not $subtitle_initially_visible)",
+                    "$anim_type": "@hud.anim_subtitle_text_alpha_in"
+                  },
+                  {
+                    "requires": "(not $title_shadow)",
+                    "$show_shadow": false
+                  },
+                  {
+                    "requires": "$title_shadow",
+                    "$show_shadow": true
+                  }
+                ],
+                "shadow": "$show_shadow",
+                "alpha": "$anim_type",
+                "text_alignment": "center",
+                "offset": [ 1, 19 ],
+                "bindings": [
+                  {
+                    "binding_name": "#hud_subtitle_text_string",
+                    "binding_name_override": "#text",
+                    "binding_type": "global"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     ]
   },
@@ -31,15 +101,15 @@
     "size": [100, 100],
     "bindings": [
         {
-            "binding_name": "#hud_title_text_string"
+            "binding_name": "#hud_subtitle_text_string"
         },
       {
         "binding_type": "view",
-        "source_property_name": "(not (#hud_title_text_string = 'hi'))",
+        "source_property_name": "(not (#hud_subtitle_text_string = 'hi'))",
         "target_property_name": "#visible"
       },
       {
-        "binding_name": "#hud_title_text_string",
+        "binding_name": "#hud_subtitle_text_string",
         "binding_name_override": "#texture"
       }
     ]
@@ -47,15 +117,15 @@
   "item_image_factory": {
     "type": "panel",
     "factory": {
-      "name": "hud_title_text_factory",
+      "name": "hud_subtitle_text_factory",
       "control_ids": {
-        "hud_title_text": "item_image@hud.item_image"
+        "hud_subtitle_text": "item_image@hud.item_image"
       }
     }
   },
   "logo_image": {
     "type": "image",
-    "texture": "textures/ui/pack_icon",
+    "texture": "hud@$hud_subtitle_text",
     "anchor_from": "bottom_right",
     "anchor_to": "bottom_right",
     "size": [100, 100],
