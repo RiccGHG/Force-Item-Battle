@@ -1,5 +1,5 @@
 import { world } from "@minecraft/server";
-import { settings, teams } from "../constants";
+import { playerData, mainData, teams } from "../constants";
 /**
  *
  * @returns {string}
@@ -44,16 +44,19 @@ export function allPlayersExist() {
   return exist;
 }
 /**
- * 
- * @param {string} teamId 
- * @param {string[]} players 
+ *
+ * @param {string} teamId
+ * @param {string[]} players
  */
 export function createTeam(teamId, players) {
   /**@type {import("../constants").team} */
   const fullData = {
     items: [],
     players,
-    skips: settings.get("skips") ?? 3
+    skips: mainData.get("skips") ?? 3,
   };
-  teams.set(teamId, fullData)
+  teams.set(teamId, fullData);
+  players.forEach((p) => {
+    playerData.set(p, { team: teamId });
+  });
 }

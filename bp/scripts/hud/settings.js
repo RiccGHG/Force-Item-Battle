@@ -1,6 +1,6 @@
 import { world, system } from "@minecraft/server";
 import { ActionFormData, ModalFormData } from "@minecraft/server-ui";
-import { playerData, settings, teams } from "../constants";
+import { playerData, mainData, teams } from "../constants";
 import { createTeam, formatTeams, validTeamSize } from "../functions/team_functions";
 
 export function allSettings(player) {
@@ -24,10 +24,10 @@ export function allSettings(player) {
 function gameSettings(player) {
   /**@type {{time: import("./timer").timer, skips: number}} */
   const Default =
-    settings.size() > 0
+    mainData.size() > 0
       ? {
-          time: settings.get("time"),
-          skips: settings.get("skips"),
+          time: mainData.get("time"),
+          skips: mainData.get("skips"),
         }
       : {
           time: { h: 1, min: 0, s: 0 },
@@ -76,8 +76,8 @@ function gameSettings(player) {
       if (isNaN(skips))
         return player.sendMessage("§c§l»§r§c The skips must be a number.");
 
-      settings.set("time", time);
-      settings.set("skips", skips);
+      mainData.set("time", time);
+      mainData.set("skips", skips);
       return player.sendMessage("§a§l»§r§a Settings updated.");
     });
 }

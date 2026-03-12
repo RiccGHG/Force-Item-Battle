@@ -2,7 +2,7 @@ import { DataBase } from "./db/data_base";
 
 export const playerData = new DataBase("playerData");
 export const teams = new DataBase("teams");
-export const settings = new DataBase("settings");
+export const mainData = new DataBase("settings");
 
 /**--Interface's-- */
 /**

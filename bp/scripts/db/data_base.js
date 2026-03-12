@@ -53,7 +53,7 @@ export class DataBase {
         `Can not save Data\n for identifier: ${this.#identifier} Invalid Key, must be string or number. Key: ${key}`,
       );
     const data = this.get(key);
-    if (data) return true;
+    if (data !== undefined) return true;
     return false;
   }
   delete(key) {
