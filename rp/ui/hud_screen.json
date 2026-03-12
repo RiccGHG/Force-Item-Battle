@@ -29,7 +29,7 @@
     "anchor_from": "top_right",
     "anchor_to": "top_right",
     "size": [50, 50],
-    "offset": [-20, -20],
+    "offset": [-15, 20],
     "bindings": [
         {
             "binding_name": "#hud_subtitle_text_string"
@@ -49,10 +49,10 @@
   "logo_image": {
     "type": "image",
     "texture": "textures/ui/pack_icon",
-    "anchor_from": "bottom_right",
-    "anchor_to": "bottom_right",
-    "size": [100, 100],
-    "offset": [-20, 0],
+    "anchor_from": "bottom_left",
+    "anchor_to": "bottom_left",
+    "size": [80, 80],
+    "offset": [20, 0],
     "visible": true
   },
   "root_panel": {
