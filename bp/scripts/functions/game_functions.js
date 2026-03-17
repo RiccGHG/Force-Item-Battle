@@ -214,19 +214,19 @@ export function addItem(teamId) {
  * @param {Player} player
  */
 export function backpack(player) {
+  if (player.isFalling || player.isGliding || player.isSwimming) return;
   const teamId = playerData.get(player.name).team;
   /**@type {import("../constants").team} */
   const team = teams.get(teamId);
 
   let hasRider = false;
   team.players.forEach((pName) => {
-    if (player.isFalling || player.isGliding || player.isSwimming) return;
-    const player = world.getAllPlayers().find((p) => p.name === pName);
-    if (!player) return;
+    const teamPlayer = world.getAllPlayers().find((p) => p.name === pName);
+    if (!teamPlayer) return;
 
-    const location = player.location;
-    const playerDimension = player.dimension;
-    const dimension = world.getDimension(dimension.id);
+    const location = teamPlayer.location;
+    const playerDimension = teamPlayer.dimension;
+    const dimension = world.getDimension(playerDimension.id);
     const entity = dimension.getEntities({
       location: location,
       maxDistance: 2,
@@ -243,7 +243,7 @@ export function backpack(player) {
     return player.sendMessage(
       "§e§l» §r§cSomeone of your team is currently on the backpack. Try it later again!",
     );
-    
+
   const backpackEntity = player.dimension.spawnEntity(
     "ricc:backpack",
     player.location,
@@ -252,7 +252,7 @@ export function backpack(player) {
   const inv = backpackEntity.getComponent("inventory").container;
   const items = backpacks.get(teamId);
 
-  for (const i = 0; i < inv.size; i++) {
+  for (let i = 0; i < inv.size; i++) {
     inv.setItem(i, items[i]);
   }
 
@@ -269,7 +269,7 @@ export function backpack(player) {
     });
   }).then((v) => {
     let newItems = [];
-    for (const i = 0; i < inv.size; i++) {
+    for (let i = 0; i < inv.size; i++) {
       const item = inv.getItem(i);
       newItems.push(item);
     }
