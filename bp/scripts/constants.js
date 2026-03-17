@@ -1,8 +1,11 @@
 import { DataBase } from "./db/data_base";
+import { itemDB } from "./db/item_db"
 
 export const playerData = new DataBase("playerData");
 export const teams = new DataBase("teams");
 export const mainData = new DataBase("settings");
+export const backpacks = new itemDB("backpacks", 10, 270, true)
+
 export const invalidItems = [
   "minecraft:command_block",
   "minecraft:chain_command_block",

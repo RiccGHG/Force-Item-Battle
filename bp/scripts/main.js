@@ -5,6 +5,7 @@ import { allSettings } from "./hud/settings.js";
 import { mainData, playerData, teams } from "./constants.js";
 import { allPlayersExist } from "./functions/team_functions.js";
 import {
+  backpack,
   end,
   formatIdentifier,
   getPath,
@@ -52,7 +53,7 @@ system.runInterval(() => {
 
 world.afterEvents.itemUse.subscribe((e) => {
   if (e.itemStack.typeId === "minecraft:compass") {
-    show(e.source);
+    allSettings(e.source);
   }
   if (e.itemStack.typeId === "minecraft:clock") {
     start(e.source);
@@ -63,12 +64,11 @@ world.afterEvents.itemUse.subscribe((e) => {
   if (e.itemStack.typeId === "minecraft:magma_cream") {
     skip(e.source);
   } 
+  if (e.itemStack.typeId === "minecraft:slime_ball") return backpack(e.source);
 });
-function show(player) {
-  allSettings(player);
-}
 
 world.afterEvents.playerInventoryItemChange.subscribe((e) => {
+  if (!mainData.get("started")) return;
   const player = e.player;
   const item = e.itemStack;
 
@@ -80,4 +80,14 @@ world.afterEvents.playerInventoryItemChange.subscribe((e) => {
 
   if (teamItem.item !== item.typeId) return;
   obtained(player);
+})
+
+
+/**@typedef {import("@minecraft/server").CustomCommand} cmd */
+system.beforeEvents.startup.subscribe((init) => {
+  /**@type {cmd} */
+  const startCmd = {
+    name: "ricc:start",
+    description: "Start the game",
+  }
 })

@@ -1,0 +1,52 @@
+{
+  "format_version": "1.20.41",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "ricc:backpack",
+      "is_spawnable": false,
+      "is_summonable": true
+    },
+    "component_groups": {},
+    "components": {
+      "minecraft:type_family": { "family": ["backpack"] },
+      "minecraft:health": { "value": 10, "max": 10 },
+      "minecraft:damage_sensor": {
+        "triggers": { "cause": "all", "deals_damage": false }
+      },
+      "minecraft:rideable": {
+        "controlling_seat": 0,
+        "crouching_skip_interact": true,
+        "family_types": ["player"],
+        "interact_text": "Open your inventory",
+        "pull_in_entities": true,
+        "rider_can_interact": false,
+        "seat_count": 1,
+        "seats": [
+          {
+        "position": [
+          0,
+          0,
+          0
+        ]
+          }
+        ]
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      },
+      "minecraft:collision_box": {
+        "height": 0.1,
+        "width": 0.1
+      },
+      "minecraft:inventory": {
+        "can_be_siphoned_from": false,
+        "container_type": "container",
+        "inventory_size": 27,
+        "private": true,
+        "restrict_to_owner": false
+      }
+    },
+    "events": {}
+  }
+}

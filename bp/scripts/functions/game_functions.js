@@ -5,7 +5,13 @@ import {
   BlockTypes,
   ItemStack,
 } from "@minecraft/server";
-import { playerData, mainData, teams, invalidItems } from "../constants";
+import {
+  playerData,
+  mainData,
+  teams,
+  invalidItems,
+  backpacks,
+} from "../constants";
 import { allPlayersExist } from "./team_functions";
 import { textureMap } from "../mc_texture_map";
 import { ChestFormData } from "../extensions/forms";
@@ -41,7 +47,10 @@ export function start(starter) {
     };
 
     data["items"].push(itemData);
+    data["skips"] = mainData.get("skips");
     teams.set(teamId, data);
+
+    backpacks.set(teamId, []);
   });
 
   world.getAllPlayers().forEach((p) => p.playSound("random.levelup"));
@@ -52,7 +61,7 @@ export function start(starter) {
  * @param {string} str
  */
 export function formatIdentifier(str) {
-  str = str.replace(/[a-z0-9]+:/, "");
+  str = str.replace(/.+:/, "");
   str = str.replace(/_/g, " ");
   str = str.replace(/ [a-z]/g, (letter) => letter.toUpperCase());
   str = str.replace(str[0], str[0].toUpperCase());
@@ -182,7 +191,9 @@ export function obtained(player) {
     if (!player) return;
 
     player.playSound("random.orb");
-    player.sendMessage(`§b§l»§r§7 Found item: ${formatIdentifier(team.items[team.items.length - 2]?.item)}`);
+    player.sendMessage(
+      `§b§l»§r§7 Found item: ${formatIdentifier(team.items[team.items.length - 2]?.item)}`,
+    );
   });
 }
 
@@ -199,9 +210,71 @@ export function addItem(teamId) {
   teams.set(teamId, team);
 }
 /**
- * 
- * @param {Player} player 
+ *
+ * @param {Player} player
  */
 export function backpack(player) {
-  
+  const teamId = playerData.get(player.name).team;
+  /**@type {import("../constants").team} */
+  const team = teams.get(teamId);
+
+  let hasRider = false;
+  team.players.forEach((pName) => {
+    if (player.isFalling || player.isGliding || player.isSwimming) return;
+    const player = world.getAllPlayers().find((p) => p.name === pName);
+    if (!player) return;
+
+    const location = player.location;
+    const playerDimension = player.dimension;
+    const dimension = world.getDimension(dimension.id);
+    const entity = dimension.getEntities({
+      location: location,
+      maxDistance: 2,
+      type: "ricc:backpack",
+    });
+
+    if (entity.length > 0) {
+      hasRider = true;
+      return;
+    }
+  });
+
+  if (hasRider)
+    return player.sendMessage(
+      "§e§l» §r§cSomeone of your team is currently on the backpack. Try it later again!",
+    );
+    
+  const backpackEntity = player.dimension.spawnEntity(
+    "ricc:backpack",
+    player.location,
+  );
+  const rideable = backpackEntity.getComponent("rideable");
+  const inv = backpackEntity.getComponent("inventory").container;
+  const items = backpacks.get(teamId);
+
+  for (const i = 0; i < inv.size; i++) {
+    inv.setItem(i, items[i]);
+  }
+
+  rideable.addRider(player);
+
+  new Promise((res, rej) => {
+    const interval = system.runInterval(() => {
+      const riders = rideable.getRiders();
+
+      if (riders.length <= 0) {
+        res(true);
+        system.clearRun(interval);
+      }
+    });
+  }).then((v) => {
+    let newItems = [];
+    for (const i = 0; i < inv.size; i++) {
+      const item = inv.getItem(i);
+      newItems.push(item);
+    }
+    backpacks.set(teamId, newItems);
+  }).finally(() => {
+    backpackEntity.remove();
+  })
 }

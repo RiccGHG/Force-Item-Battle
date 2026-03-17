@@ -1,5 +1,5 @@
 import { world } from "@minecraft/server";
-import { playerData, mainData, teams } from "../constants";
+import { playerData, mainData, teams, backpacks } from "../constants";
 /**
  *
  * @returns {string}
@@ -56,6 +56,7 @@ export function createTeam(teamId, players) {
     skips: mainData.get("skips") ?? 3,
   };
   teams.set(teamId, fullData);
+  backpacks.set(teamId, []);
   players.forEach((p) => {
     playerData.set(p, { team: teamId });
   });
