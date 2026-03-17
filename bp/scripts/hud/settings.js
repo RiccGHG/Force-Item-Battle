@@ -50,20 +50,20 @@ function gameSettings(player) {
       if (!roundTime)
         return player.sendMessage("§c§l»§r§c You need to put in a roundTime.");
 
-      const check = /(\d+)h (\d+)m (\d+)s/.test(roundTime);
+      const check = /(\d+)h(rs|r)? (\d+)m(in)? (\d+)s(ec)?/.test(roundTime);
 
       if (!check)
         return player.sendMessage(
           "§c§l»§r§c The round time must be in this pattern: 0h 0m 0s. The zero's can be changed.",
         );
 
-      const match = roundTime.match(/(\d+)h (\d+)m (\d+)s/);
+      const match = roundTime.match(/(\d+)h(rs|r)? (\d+)m(in)? (\d+)s(ec)?/);
 
       /**@type {import("./timer").timer} */
       let time = {
         h: parseInt(match[1]),
-        min: parseInt(match[2]),
-        s: parseInt(match[3]),
+        min: parseInt(match[3]),
+        s: parseInt(match[5]),
       };
 
       let skips = r.formValues[1];

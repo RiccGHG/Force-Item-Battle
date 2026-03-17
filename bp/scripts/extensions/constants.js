@@ -24,6 +24,10 @@ export const custom_content = {
 		 type: 'item'
 	},
 	*/
+	"monkey:textmenu": {
+		texture: 'textures/items/book_writable',
+		type: 'item'
+	}
 };
 //Blocks are excluded from the count, as they do not shift vanilla IDs.
 export const number_of_custom_items = Object.values(custom_content).filter(v => v.type === 'item').length;
